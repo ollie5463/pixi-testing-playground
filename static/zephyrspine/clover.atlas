@@ -1,0 +1,265 @@
+
+clover-0.png
+  size:1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+silver
+  rotate: false
+  xy:0.25,0.25
+  size:239.5,239.5
+  orig:256,256
+  offset:8,4.5
+  index: -1
+clover06
+  rotate: false
+  xy:0.25,244.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover07
+  rotate: false
+  xy:0.25,480.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover08
+  rotate: false
+  xy:0.25,716.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover29
+  rotate: false
+  xy:0.25,952.25
+  size:59.5,55.5
+  orig:256,256
+  offset:12,188.5
+  index: -1
+clover00
+  rotate: false
+  xy:0.25,1012.25
+  size:15.5,11.5
+  orig:256,256
+  offset:12,232.5
+  index: -1
+clover15
+  rotate: false
+  xy:20.25,1012.25
+  size:7.5,11.5
+  orig:256,256
+  offset:236,12.5
+  index: -1
+clover01
+  rotate: false
+  xy:64.25,952.25
+  size:55.5,55.5
+  orig:256,256
+  offset:12,188.5
+  index: -1
+clover14
+  rotate: false
+  xy:124.25,952.25
+  size:51.5,51.5
+  orig:256,256
+  offset:192,12.5
+  index: -1
+clover30
+  rotate: false
+  xy:124.25,1008.25
+  size:15.5,15.5
+  orig:256,256
+  offset:12,228.5
+  index: -1
+clover16
+  rotate: false
+  xy:180.25,952.25
+  size:51.5,51.5
+  orig:256,256
+  offset:192,12.5
+  index: -1
+clover09
+  rotate: false
+  xy:236.25,244.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover21
+  rotate: false
+  xy:244.25,0.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover22
+  rotate: false
+  xy:236.25,480.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover23
+  rotate: false
+  xy:236.25,716.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+ping
+  rotate: false
+  xy:236.25,952.25
+  size:27.5,27.5
+  orig:256,256
+  offset:112,112.5
+  index: -1
+clover24
+  rotate: false
+  xy:480.25,0.25
+  size:231.5,231.5
+  orig:256,256
+  offset:12,12.5
+  index: -1
+clover25
+  rotate: false
+  xy:716.25,0.25
+  size:231.5,227.5
+  orig:256,256
+  offset:12,16.5
+  index: -1
+clover05
+  rotate: false
+  xy:716.25,232.25
+  size:227.5,227.5
+  orig:256,256
+  offset:12,16.5
+  index: -1
+clover10
+  rotate: false
+  xy:472.25,236.25
+  size:223.5,223.5
+  orig:256,256
+  offset:20,12.5
+  index: -1
+clover20
+  rotate: false
+  xy:472.25,464.25
+  size:219.5,223.5
+  orig:256,256
+  offset:24,12.5
+  index: -1
+backdrop
+  rotate: false
+  xy:696.25,464.25
+  size:199.5,191.5
+  orig:256,256
+  offset:28,32.5
+  index: -1
+clover02
+  rotate: false
+  xy:900.25,464.25
+  size:99.5,99.5
+  orig:256,256
+  offset:12,144.5
+  index: -1
+clover28
+  rotate: false
+  xy:900.25,568.25
+  size:99.5,99.5
+  orig:256,256
+  offset:12,144.5
+  index: -1
+clover26
+  rotate: false
+  xy:696.25,660.25
+  size:187.5,183.5
+  orig:256,256
+  offset:12,60.5
+  index: -1
+clover12
+  rotate: false
+  xy:888.25,672.25
+  size:135.5,139.5
+  orig:256,256
+  offset:108,12.5
+  index: -1
+clover18
+  rotate: false
+  xy:888.25,816.25
+  size:135.5,139.5
+  orig:256,256
+  offset:108,12.5
+  index: -1
+shadow
+  rotate: false
+  xy:472.25,848.25
+  size:179.5,175.5
+  orig:256,256
+  offset:36,36.5
+  index: -1
+clover27
+  rotate: false
+  xy:472.25,692.25
+  size:143.5,143.5
+  orig:256,256
+  offset:12,100.5
+  index: -1
+clover
+  rotate: false
+  xy:656.25,848.25
+  size:167.5,155.5
+  orig:256,256
+  offset:40,48.5
+  index: -1
+
+clover-1.png
+  size:192,796
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clover13
+  rotate: false
+  xy:0.25,0.25
+  size:95.5,95.5
+  orig:256,256
+  offset:148,12.5
+  index: -1
+clover17
+  rotate: false
+  xy:100.25,0.25
+  size:91.5,95.5
+  orig:256,256
+  offset:152,12.5
+  index: -1
+clover03
+  rotate: false
+  xy:0.25,100.25
+  size:143.5,139.5
+  orig:256,256
+  offset:12,104.5
+  index: -1
+clover11
+  rotate: false
+  xy:0.25,244.25
+  size:179.5,179.5
+  orig:256,256
+  offset:64,12.5
+  index: -1
+clover19
+  rotate: false
+  xy:0.25,428.25
+  size:179.5,179.5
+  orig:256,256
+  offset:64,12.5
+  index: -1
+clover04
+  rotate: false
+  xy:0.25,612.25
+  size:183.5,183.5
+  orig:256,256
+  offset:12,60.5
+  index: -1
+

@@ -1,0 +1,11 @@
+{
+    "layers": {
+        "lobby-info": {
+            "frame": "lobby-assets/images/lobby-panel.png",
+            "x": 52,
+            "y": 88,
+            "width": 330,
+            "height": 514
+        }
+    }
+}

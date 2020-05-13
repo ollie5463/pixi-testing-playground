@@ -1,6 +1,8 @@
 import * as PIXI from "pixi.js";
+window.PIXI = PIXI;
+import "pixi-spine"
 
-import rabbitImage from "./assets/rabbit.png";
+import TextureLoader from "./loader/TextureLoader";
 
 export class Main {
     private static readonly GAME_WIDTH = 800;
@@ -8,9 +10,27 @@ export class Main {
 
     private app!: PIXI.Application;
 
+    private textureLoader = new TextureLoader();
+    private manifest = {
+        // firstLayout: "./layout1.json",
+        // breakfast: "./breakfast.xml",
+        // sprites: "./spritesData.json",
+        // testTxt: "./test.txt",
+        dfgLogoSpine: "./dfg-logo.json", 
+        // mpa: "./multipageatlas/atlas.json",
+        // z: "./zephyrspine/clover.json",
+        // spriteSheetTest: "./testSpritesheen-0.json",
+    };
+
     constructor() {
         window.onload = (): void => {
-            this.startLoadingAssets();
+            this.textureLoader.loadAssets(this.manifest).then((value:Map<string, PIXI.LoaderResource>) => {
+                console.log(value);
+
+                // console.log(PIXI.Loader.shared.resources["breakfast"]);
+                // console.log(PIXI.Loader.shared.resources["testTxt"]);
+                this.onAssetsLoaded();
+            });
         };
     }
 
@@ -19,36 +39,46 @@ export class Main {
         return "hello world";
     }
 
-    private startLoadingAssets(): void {
-        const loader = PIXI.Loader.shared;
-        loader.add("rabbit", rabbitImage);
-        loader.add("spriteExample", "./spritesData.json"); // example of loading spriteSheet
-
-        loader.on("complete", () => {
-            this.onAssetsLoaded();
-        });
-        //
-        loader.load();
-    }
 
     private onAssetsLoaded(): void {
         this.createRenderer();
 
         const stage = this.app.stage;
 
-        const bunny = this.getBunny();
-        bunny.position.set(Main.GAME_WIDTH / 2, Main.GAME_HEIGHT / 2);
+        // const birdFromSprite = this.getBird();
+        // birdFromSprite.anchor.set(0.5, 0.5);
+        // birdFromSprite.position.set(Main.GAME_WIDTH / 2, Main.GAME_HEIGHT / 2);
 
-        const birdFromSprite = this.getBird();
-        birdFromSprite.anchor.set(0.5, 0.5);
-        birdFromSprite.position.set(Main.GAME_WIDTH / 2, Main.GAME_HEIGHT / 2 + bunny.height);
+        // stage.addChild(birdFromSprite);
 
-        stage.addChild(bunny);
-        stage.addChild(birdFromSprite);
+        console.log('texture cache: ', PIXI.utils.TextureCache);
+        if (this.textureLoader.spine) {
+            debugger
+            // const loader = PIXI.Loader.shared;
+            const animation = new PIXI.spine.Spine(this.textureLoader.spine);
+            animation.position.set(Main.GAME_WIDTH/2, Main.GAME_HEIGHT/3)
+            // add the animation to the scene and render...
+            stage.addChild(animation);
+            animation.scale.x = 0.5;
+            animation.scale.y = 0.5;
+    
+            if (animation.state.hasAnimation('animation')) {
+                // run forever, little boy!
+                animation.state.setAnimation(0, 'animation', true);
+                // dont run too fast
+                animation.state.timeScale = 1;
+            }
+        }
 
-        this.app.ticker.add(() => {
-            bunny.rotation += 0.05;
-        });
+
+        // const rainbow = PIXI.Loader.shared.resources["spriteSheetTest"].spritesheet?.textures['background-rainbow/images/background-rainbow.png'];
+        // console.log(PIXI.Loader.shared.resources);
+        // const sprite = new PIXI.Sprite(rainbow);
+        // sprite.scale.set(0.5)
+        // stage.addChild(sprite);
+
+        // this.playSpine();
+        // this.drawMPAImage();
     }
 
     private createRenderer(): void {
@@ -77,17 +107,20 @@ export class Main {
         this.app.stage.scale.y = window.innerHeight / Main.GAME_HEIGHT;
     }
 
-    private getBunny(): PIXI.Sprite {
-        const bunnyRotationPoint = {
-            x: 0.5,
-            y: 0.5,
-        };
+    private playSpine(): void {
+        const animation = new PIXI.spine.Spine(PIXI.Loader.shared.resources["z"].spineData);
+        animation.position.set(Main.GAME_WIDTH/2, Main.GAME_HEIGHT/3)
+        // add the animation to the scene and render...
+        this.app.stage.addChild(animation);
+        animation.scale.x = 0.5;
+        animation.scale.y = 0.5;
 
-        const bunny = new PIXI.Sprite(PIXI.Texture.from("rabbit"));
-        bunny.anchor.set(bunnyRotationPoint.x, bunnyRotationPoint.y);
-        bunny.scale.set(2, 2);
-
-        return bunny;
+        if (animation.state.hasAnimation('animation')) {
+            // run forever, little boy!
+            animation.state.setAnimation(0, 'animation', true);
+            // dont run too fast
+            animation.state.timeScale = 1;
+        }
     }
 
     private getBird(): PIXI.AnimatedSprite {
@@ -103,6 +136,15 @@ export class Main {
 
         return bird;
     }
+
+    private drawMPAImage(): void {
+        const sheet = PIXI.Loader.shared.resources['mpa'].data;
+        const mpa = new PIXI.Sprite(sheet.textures[0].frames["daily-calendar-assets/images/calendar-tick.png"]);
+        // const mpa = PIXI.Sprite.from("daily-calendar-assets/images/calendar-cross.png");
+        mpa.position.set(Main.GAME_WIDTH/3, Main.GAME_HEIGHT/3)
+        this.app.stage.addChild(mpa);
+    }
+
 }
 
 new Main();
