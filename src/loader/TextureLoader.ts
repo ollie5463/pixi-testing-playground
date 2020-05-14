@@ -18,19 +18,19 @@ export default class TextureLoader{
 		filesToLoad.forEach(entry => {
 			loader.add(entry[1]);
 		});
-		// let customLoaderCalls = 1;
-		// const line: string[] = [];
+
 		const customLoader = function (path: string, callback: (tex: PIXI.BaseTexture) => any): void {
 			const texture = PIXI.BaseTexture.from('./' + path);
 			callback(texture);
 		}
 		loader.use((resource: PIXI.LoaderResource, next: () => any) => {
 			if (resource.extension === 'json') {
-				// const scale = 5;
+				const scale = 8;
 				const atlas = loader.resources[resource.name + '_atlas'];
 
 				const atlasData = new core.TextureAtlas(atlas.data, customLoader);
 				const parser = new core.SkeletonJson(new core.AtlasAttachmentLoader(atlasData))
+				parser.scale = scale;
 				const skelData = parser.readSkeletonData(resource.data);
 				this.spine = skelData;
 

@@ -16,7 +16,8 @@ export class Main {
         // breakfast: "./breakfast.xml",
         // sprites: "./spritesData.json",
         // testTxt: "./test.txt",
-        dfgLogoSpine: "./dfg-logo.json", 
+        // dfgLogoSpine: "./dfg-logo.json", 
+        atlasJson: "./dfg-logo.json",
         // mpa: "./multipageatlas/atlas.json",
         // z: "./zephyrspine/clover.json",
         // spriteSheetTest: "./testSpritesheen-0.json",
@@ -53,7 +54,6 @@ export class Main {
 
         console.log('texture cache: ', PIXI.utils.TextureCache);
         if (this.textureLoader.spine) {
-            debugger
             // const loader = PIXI.Loader.shared;
             const animation = new PIXI.spine.Spine(this.textureLoader.spine);
             animation.position.set(Main.GAME_WIDTH/2, Main.GAME_HEIGHT/3)
