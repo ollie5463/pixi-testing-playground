@@ -1,84 +1,63 @@
 import * as PIXI from "pixi.js";
 window.PIXI = PIXI;
 import "pixi-spine"
-
-import TextureLoader from "./loader/TextureLoader";
+import 'regenerator-runtime/runtime'
+import { AssetManager } from '@bolt/bolt-assets';
+import { SpineLoader } from './loader/SpineLoader';
+import { AtlasLoader } from './loader/AtlasLoader';
 
 export class Main {
     private static readonly GAME_WIDTH = 800;
     private static readonly GAME_HEIGHT = 600;
 
     private app!: PIXI.Application;
-
-    private textureLoader = new TextureLoader();
-    private manifest = {
-        // firstLayout: "./layout1.json",
-        // breakfast: "./breakfast.xml",
-        // sprites: "./spritesData.json",
-        // testTxt: "./test.txt",
-        // dfgLogoSpine: "./dfg-logo.json", 
-        atlasJson: "./dfg-logo.json",
-        // mpa: "./multipageatlas/atlas.json",
-        // z: "./zephyrspine/clover.json",
-        // spriteSheetTest: "./testSpritesheen-0.json",
-    };
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    private spineLoader = new SpineLoader(PIXI.Loader.shared);
+    private atlasLoader = new AtlasLoader(PIXI.Loader.shared);
+    private manifest = [
+        "symbol-disappear-atlas.json",
+        "symbol-disappear-atlas-0.png"
+    ];
 
     constructor() {
         window.onload = (): void => {
-            this.textureLoader.loadAssets(this.manifest).then((value:Map<string, PIXI.LoaderResource>) => {
-                console.log(value);
-
-                // console.log(PIXI.Loader.shared.resources["breakfast"]);
-                // console.log(PIXI.Loader.shared.resources["testTxt"]);
-                this.onAssetsLoaded();
-            });
+            // this.spineLoader.addAssetsToLoader(this.manifest);
+            // this.spineLoader.loadAssets().then(() => {
+            //     this.onAssetsLoaded();
+            //     this.helloWorld();
+            // });  
+            this.atlasLoader.addAssetsToLoader(this.manifest);
+            this.atlasLoader.loadAssets().then(() => {
+                // this.createSpine();
+                this.checkAtlasFiles();
+                this.helloWorld();
+            });  
         };
     }
 
-    // add for the test example purpose
-    public helloWorld(): string {
-        return "hello world";
+    public helloWorld(): void {
+        console.log("hello world");
     }
 
+    private checkAtlasFiles(): void {
+        console.log(PIXI.utils.TextureCache);
+    }
 
-    private onAssetsLoaded(): void {
+    private createSpine(): void {
         this.createRenderer();
 
+        // spine stuff
+        const asset = this.spineLoader.getAsset('./high-1-spine.json');
+        const spine = new PIXI.spine.Spine(asset);
+        spine.state.setAnimation(0, 'locked', true);
+        spine.state.timeScale = 1;
+
         const stage = this.app.stage;
+        spine.x = this.app.renderer.width / 2;
+        spine.y = this.app.renderer.height / 2;
+        spine.scale.set(2.5);
+        stage.addChild(spine);
 
-        // const birdFromSprite = this.getBird();
-        // birdFromSprite.anchor.set(0.5, 0.5);
-        // birdFromSprite.position.set(Main.GAME_WIDTH / 2, Main.GAME_HEIGHT / 2);
-
-        // stage.addChild(birdFromSprite);
-
-        console.log('texture cache: ', PIXI.utils.TextureCache);
-        if (this.textureLoader.spine) {
-            // const loader = PIXI.Loader.shared;
-            const animation = new PIXI.spine.Spine(this.textureLoader.spine);
-            animation.position.set(Main.GAME_WIDTH/2, Main.GAME_HEIGHT/3)
-            // add the animation to the scene and render...
-            stage.addChild(animation);
-            animation.scale.x = 0.5;
-            animation.scale.y = 0.5;
-    
-            if (animation.state.hasAnimation('animation')) {
-                // run forever, little boy!
-                animation.state.setAnimation(0, 'animation', true);
-                // dont run too fast
-                animation.state.timeScale = 1;
-            }
-        }
-
-
-        // const rainbow = PIXI.Loader.shared.resources["spriteSheetTest"].spritesheet?.textures['background-rainbow/images/background-rainbow.png'];
-        // console.log(PIXI.Loader.shared.resources);
-        // const sprite = new PIXI.Sprite(rainbow);
-        // sprite.scale.set(0.5)
-        // stage.addChild(sprite);
-
-        // this.playSpine();
-        // this.drawMPAImage();
     }
 
     private createRenderer(): void {

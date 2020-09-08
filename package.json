@@ -17,8 +17,9 @@
     "author": "jkanchelov",
     "license": "MIT",
     "dependencies": {
-        "pixi-spine": "2.0.5",
-        "pixi.js": "^5.2.3"
+        "@bolt/bolt-assets": "file:../bolt-assets",
+        "pixi-spine": "2.1.8",
+        "pixi.js": "5.2.4"
     },
     "devDependencies": {
         "@types/jest": "^25.2.1",

@@ -1,0 +1,435 @@
+{
+  "skeleton": {
+    "hash": "vfOKkADHokGfFvZbbO4LZ1Yhw0U",
+    "spine": "3.8.96",
+    "images": "./images/",
+    "audio": "/Users/giulio.detoma/Dropbox (Gamesys)/Gamesys Design/projects/slot-games/gamesys-games/barnyard-bonanza/art-production/development/working-files/animation/Giulio/Barnyard Bonanza/wood-particles"
+  },
+  "bones": [
+    {
+      "name": "root",
+      "rotation": -0.05
+    },
+    {
+      "name": "symbol-disappear",
+      "parent": "root",
+      "x": 33.19,
+      "y": 116.86,
+      "scaleX": 0.95,
+      "scaleY": 0.95
+    },
+    {
+      "name": "1",
+      "parent": "symbol-disappear",
+      "length": 62.32,
+      "rotation": -4.4,
+      "x": 12.97,
+      "y": 153.79
+    },
+    {
+      "name": "2",
+      "parent": "symbol-disappear",
+      "length": 86.04,
+      "x": 12.46,
+      "y": 99.13
+    },
+    {
+      "name": "3",
+      "parent": "symbol-disappear",
+      "length": 106.76,
+      "rotation": 2.73,
+      "x": 12.73,
+      "y": 47.12
+    },
+    {
+      "name": "4",
+      "parent": "symbol-disappear",
+      "length": 99.2,
+      "x": 15.2,
+      "y": -25.66
+    },
+    {
+      "name": "5",
+      "parent": "symbol-disappear",
+      "length": 111.17,
+      "rotation": -2.05,
+      "x": 13.73,
+      "y": 13.22
+    }
+  ],
+  "slots": [
+    {
+      "name": "wood-01",
+      "bone": "1"
+    },
+    {
+      "name": "smoke-01",
+      "bone": "1"
+    },
+    {
+      "name": "wood-02",
+      "bone": "2"
+    },
+    {
+      "name": "smoke-02",
+      "bone": "2"
+    },
+    {
+      "name": "wood-03",
+      "bone": "3"
+    },
+    {
+      "name": "smoke-03",
+      "bone": "3"
+    },
+    {
+      "name": "wood-04",
+      "bone": "4"
+    },
+    {
+      "name": "smoke-04",
+      "bone": "4"
+    },
+    {
+      "name": "smoke-05",
+      "bone": "5"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "smoke-01": {
+          "smoke-01": {
+            "x": -1.13,
+            "y": -154.33,
+            "rotation": 4.4,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "smoke-02": {
+          "smoke-02": {
+            "x": -12.46,
+            "y": -99.13,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "smoke-03": {
+          "smoke-03": {
+            "x": -14.95,
+            "y": -46.46,
+            "rotation": -2.73,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "smoke-04": {
+          "smoke-04": {
+            "x": -15.2,
+            "y": 25.66,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "smoke-05": {
+          "smoke-05": {
+            "x": -13.25,
+            "y": -13.71,
+            "rotation": 2.05,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "wood-01": {
+          "wood-01": {
+            "x": -1.13,
+            "y": -154.33,
+            "rotation": 4.4,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "wood-02": {
+          "wood-02": {
+            "x": -12.46,
+            "y": -99.13,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "wood-03": {
+          "wood-03": {
+            "x": -14.95,
+            "y": -46.46,
+            "rotation": -2.73,
+            "width": 3200,
+            "height": 3200
+          }
+        },
+        "wood-04": {
+          "wood-04": {
+            "x": -15.2,
+            "y": 25.66,
+            "width": 3200,
+            "height": 3200
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {
+      "slots": {
+        "smoke-01": {
+          "attachment": [
+            {
+              "name": "smoke-01"
+            },
+            {
+              "time": 0.1,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "smoke-02": {
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.1,
+              "name": "smoke-02"
+            },
+            {
+              "time": 0.2,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "smoke-03": {
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.2,
+              "name": "smoke-03"
+            },
+            {
+              "time": 0.3,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "smoke-04": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4333,
+              "color": "ffffffff"
+            }
+          ],
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.3,
+              "name": "smoke-04"
+            },
+            {
+              "time": 0.3667,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "smoke-05": {
+          "color": [
+            {
+              "color": "ffffff78",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4333,
+              "color": "ffffff78"
+            }
+          ],
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.3667,
+              "name": "smoke-05"
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "wood-01": {
+          "attachment": [
+            {
+              "name": "wood-01"
+            },
+            {
+              "time": 0.1,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "wood-02": {
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.1,
+              "name": "wood-02"
+            },
+            {
+              "time": 0.2,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "wood-03": {
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.2,
+              "name": "wood-03"
+            },
+            {
+              "time": 0.3,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        },
+        "wood-04": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3,
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3667,
+              "color": "ffffff77",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4333,
+              "color": "ffffff77"
+            }
+          ],
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.3,
+              "name": "wood-04"
+            },
+            {
+              "time": 0.3667,
+              "name": null
+            },
+            {
+              "time": 0.4333,
+              "name": null
+            }
+          ]
+        }
+      },
+      "bones": {
+        "4": {
+          "translate": [
+            {
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3667,
+              "x": 4,
+              "y": -34,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4333,
+              "x": 4,
+              "y": -34
+            }
+          ],
+          "scale": [
+            {
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.3667,
+              "x": 1.06,
+              "y": 1.02,
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4333,
+              "x": 1.06,
+              "y": 1.02
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scalerMetadata": {
+    "spineSkeletonScale": 0.3125,
+    "baseScale": 16
+  }
+}
