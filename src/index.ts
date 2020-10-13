@@ -2,9 +2,10 @@ import * as PIXI from "pixi.js";
 window.PIXI = PIXI;
 import "pixi-spine"
 import 'regenerator-runtime/runtime'
-import { AssetManager } from '@bolt/bolt-assets';
+import { AssetManager } from './AssetManager';
 import { SpineLoader } from './loader/SpineLoader';
 import { AtlasLoader } from './loader/AtlasLoader';
+import { ManifestPath } from './ManifestPath';
 
 export class Main {
     private static readonly GAME_WIDTH = 800;
@@ -14,24 +15,42 @@ export class Main {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     private spineLoader = new SpineLoader(PIXI.Loader.shared);
     private atlasLoader = new AtlasLoader(PIXI.Loader.shared);
-    private manifest = [
+    private atlasManifest = [
         "symbol-disappear-atlas.json",
-        "symbol-disappear-atlas-0.png"
+        "symbol-disappear-atlas-0.png",
     ];
+    private spineManifest = [
+        "symbol-disappear-spine.json"
+    ];
+    private assetManager = new AssetManager(() => {}, PIXI.Loader.shared)
 
     constructor() {
-        window.onload = (): void => {
-            // this.spineLoader.addAssetsToLoader(this.manifest);
-            // this.spineLoader.loadAssets().then(() => {
-            //     this.onAssetsLoaded();
-            //     this.helloWorld();
+        window.onload = async (): Promise<void> => {
+            // this.spine
+            // this.atlasLoader.addAssetsToLoader(this.atlasManifest);
+            // await this.atlasLoader.loadAssets();
+            // this.spineLoader.addAssetsToLoader(this.spineManifest);
+            // await this.spineLoader.loadAssets().then(() => {
+            //     // this.createSpine();
+            //     // this.spineLoader.loadAssets()
             // });  
-            this.atlasLoader.addAssetsToLoader(this.manifest);
-            this.atlasLoader.loadAssets().then(() => {
-                // this.createSpine();
-                this.checkAtlasFiles();
-                this.helloWorld();
-            });  
+            this.assetManager.bucketScale = 1;
+            this.assetManager.registerDefaultLoaders();
+            await this.assetManager.loadManifestFiles([{ path: 'manifest.json' }])
+            await this.assetManager.load('atlas')
+            await this.assetManager.load('spine')
+            // debugger
+            // this.loadSpineWithPreloadedTexture();
+            // console.log('assetManager: ', this.assetManager.getAsset('symbol-disappear-randomName-spine.json'));
+            this.createSpine();
+            // this.checkAtlasFiles();
+            // this.helloWorld();
+            // PIXI.Loader.shared.use((resource: PIXI.LoaderResource, next: () => any) => {
+            //     console.log('resource: ', resource);
+            // })
+            // PIXI.Loader.shared.add('symbol-disappear-randomName.json').load(() => {
+            //     console.log('cache: ', PIXI.utils.TextureCache);
+            // })
         };
     }
 
@@ -39,23 +58,19 @@ export class Main {
         console.log("hello world");
     }
 
-    private checkAtlasFiles(): void {
-        console.log(PIXI.utils.TextureCache);
-    }
-
     private createSpine(): void {
         this.createRenderer();
 
         // spine stuff
-        const asset = this.spineLoader.getAsset('./high-1-spine.json');
+        const asset = this.assetManager.getAsset('symbol-disappear-randomName-spine.json');
         const spine = new PIXI.spine.Spine(asset);
-        spine.state.setAnimation(0, 'locked', true);
+        spine.state.setAnimation(0, 'animation', true);
         spine.state.timeScale = 1;
 
         const stage = this.app.stage;
         spine.x = this.app.renderer.width / 2;
         spine.y = this.app.renderer.height / 2;
-        spine.scale.set(2.5);
+        spine.scale.set(0.01);
         stage.addChild(spine);
 
     }

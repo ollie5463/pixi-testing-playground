@@ -18,8 +18,10 @@
     "license": "MIT",
     "dependencies": {
         "@bolt/bolt-assets": "file:../bolt-assets",
+        "howler": "^2.2.0",
         "pixi-spine": "2.1.8",
-        "pixi.js": "5.2.4"
+        "pixi.js": "5.2.4",
+        "resource-loader": "^4.0.0-rc4"
     },
     "devDependencies": {
         "@types/jest": "^25.2.1",

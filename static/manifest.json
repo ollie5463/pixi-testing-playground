@@ -1,0 +1,10 @@
+{
+    "atlas": [
+        "symbol-disappear-atlas.json",
+        "symbol-disappear-atlas-0.png"
+
+    ],
+    "spine": [
+        "symbol-disappear-randomName-spine.json"
+    ]
+}

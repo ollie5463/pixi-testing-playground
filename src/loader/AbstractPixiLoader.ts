@@ -14,6 +14,7 @@ export abstract class AbstractPixiLoader implements ILoader {
 
 	public addAssetsToLoader(assets: string[]): string[] {
 		const [includedAssets, excludedAssets] = filterStringsBy(assets, this.validExtensions);
+		console.log('includedAssets: ', includedAssets);
 		for (const asset of includedAssets) {
 			const assetName = this.applyPrefixRegex(asset);
 			this.loader.add(assetName, asset);

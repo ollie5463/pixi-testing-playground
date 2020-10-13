@@ -1,0 +1,181 @@
+{
+  "skeleton": {
+    "hash": "aFrOxPgpP3P/r7MxW2kevP29XAo",
+    "spine": "3.8.95",
+    "images": "./images/",
+    "audio": "/Users/giulio.detoma/Desktop/2x2:3x3animation/2x2undersizedsymbol"
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "bone",
+      "parent": "root"
+    }
+  ],
+  "slots": [
+    {
+      "name": "2x2-undersizesymbol-01",
+      "bone": "bone"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "2x2-undersizesymbol-01": {
+          "2x2-undersizesymbol-01": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-02": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-03": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-04": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-05": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-06": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-07": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          },
+          "2x2-undersizesymbol-08": {
+            "x": 4.01,
+            "y": 1.34,
+            "width": 384,
+            "height": 384
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "animation": {
+      "slots": {
+        "2x2-undersizesymbol-01": {
+          "color": [
+            {
+              "color": "ffffffff",
+              "curve": "stepped"
+            },
+            {
+              "time": 0.4333,
+              "color": "ffffffff",
+              "curve": 0.522,
+              "c3": 0.482
+            },
+            {
+              "time": 1,
+              "color": "ffffff00"
+            }
+          ],
+          "attachment": [
+            {
+              "name": null
+            },
+            {
+              "time": 0.0667,
+              "name": "2x2-undersizesymbol-01"
+            },
+            {
+              "time": 0.1,
+              "name": "2x2-undersizesymbol-02"
+            },
+            {
+              "time": 0.1333,
+              "name": "2x2-undersizesymbol-03"
+            },
+            {
+              "time": 0.1667,
+              "name": "2x2-undersizesymbol-04"
+            },
+            {
+              "time": 0.2,
+              "name": "2x2-undersizesymbol-05"
+            },
+            {
+              "time": 0.2333,
+              "name": "2x2-undersizesymbol-06"
+            },
+            {
+              "time": 0.2667,
+              "name": "2x2-undersizesymbol-07"
+            },
+            {
+              "time": 0.3,
+              "name": "2x2-undersizesymbol-08"
+            },
+            {
+              "time": 1,
+              "name": "2x2-undersizesymbol-08"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "bone": {
+          "rotate": [
+            {
+              "curve": "stepped"
+            },
+            {
+              "time": 1
+            }
+          ],
+          "scale": [
+            {
+              "x": 5,
+              "y": 5,
+              "curve": "stepped"
+            },
+            {
+              "time": 1,
+              "x": 5,
+              "y": 5
+            }
+          ],
+          "shear": [
+            {
+              "curve": "stepped"
+            },
+            {
+              "time": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scalerMetadata": {
+    "spineSkeletonScale": 0.3125,
+    "baseScale": 16
+  }
+}
