@@ -70,7 +70,7 @@ export class Main {
         const stage = this.app.stage;
         spine.x = this.app.renderer.width / 2;
         spine.y = this.app.renderer.height / 2;
-        spine.scale.set(0.01);
+        spine.scale.set(2.5);
         stage.addChild(spine);
 
     }

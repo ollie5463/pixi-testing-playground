@@ -28,17 +28,16 @@ export class SpineLoader implements ILoader {
 
 	public loadAssets(): Promise<void> {
 		return new Promise(resolve => {
-			console.log('loader: ', this.loader);
 			this.loader.load((loader, resources) => {
-				// const resource = resources[0];
 				for (const resource of Object.values(resources)) {
 					if (resource) {
 						const textureAtlas = new PIXI.spine.core.TextureAtlas();
 						const allTextures = this.retrieveTextures(resource)
+						const spineScalerMetadata: { spineSkeletonScale: number; baseScale: number } = resource.data.scalerMetadata;
 						textureAtlas.addTextureHash(allTextures, true);
-						console.log('textureAtlas: ', textureAtlas)
 						const parser = new spineCore.SkeletonJson(new spineCore.AtlasAttachmentLoader(textureAtlas));
-						parser.scale = 16;
+						const scale = this.bucketScale;
+						parser.scale = scale / spineScalerMetadata.baseScale;
 						const skelData: spineCore.SkeletonData = parser.readSkeletonData(resource.data);
 						this.cache.set(removeScalePrefixFromPath(resource.url), skelData);
 					}
@@ -77,69 +76,17 @@ export class SpineLoader implements ILoader {
 	public setBucketScale(scale: number): void {
 		this.bucketScale = scale;
 	}
-	// private createDynamicSpineAtlases(): void {
-		
-	// }
 
-	private addJSONSpineParsingMiddleware(): void {
-		// this.loader.pre((resource, next) => {
-		// 	console.log('resource: ', resource)
-		// 	next(new Error('dont use'));
-		// })
-
-		// this.loader.use((resource: PIXI.LoaderResource, next: () => any) => {
-		// 	const resourceNameAfterLastDash = resource.name.match('[^-]+$');
-			// debugger
-			// if (resourceNameAfterLastDash && this.validExtensions.includes(resourceNameAfterLastDash[0])) {
-			// 	// console.log(resourceNameAfterLastDash);
-			// // if (resourceNameAfterLastDash && resourceNameAfterLastDash[0] === this.validExtensions[0]) {
-			// 	const scale = this.bucketScale;
-			// 	const atlasFile: PIXI.LoaderResource | undefined = this.loader.resources[resource.name + '_atlas'];
-			// 	if (!atlasFile) {
-			// 		console.error(`AssetLoader - SpineLoader: Can't find ${resource.name + '_atlas'}`);
-			// 		return;
-			// 	}
-			// 	let atlasData: spineCore.TextureAtlas;
-			// 	// const spineScalerMetadata: { spineSkeletonScale: number; baseScale: number } = resource.data.scalerMetadata;
-
-				
-			// 	// const rawSkeletonData = resource.data;
-			// 	// const rawAtlasData = atlasFile.data;
-			// 	// console.log('rawSkeletonData: ', rawSkeletonData);
-			// 	// console.log('rawAtlasData: ', rawAtlasData);
-				
-				// const textureAtlas = new PIXI.spine.core.TextureAtlas();
-				// const allTextures = this.retrieveTextures(resource)
-				// textureAtlas.addTextureHash(allTextures, true);
-				
-			// 	// const textureAtlas = new PIXI.spine.core.TextureAtlas(rawAtlasData, (line, callback) => {
-			// 	// 	// console.log('line: ', line);
-			// 	// 	const baseTexture = PIXI.utils.TextureCache
-			// 	// 	// callback(PIXI.BaseTexture.from(line))
-			// 	// })
-
-				// const parser = new spineCore.SkeletonJson(new spineCore.AtlasAttachmentLoader(textureAtlas));
-		
-			// 	console.log('textureAtlas: ', textureAtlas)
-			// 	console.log('parser: ', parser)
-			// 	parser.scale = 16;
-			// 	// parser.scale = scale / spineScalerMetadata.baseScale || 16;
-			// 	// const skelData: spineCore.SkeletonData = parser.readSkeletonData(jsonFile.data);
-			// 	// this.cache.set(removeScalePrefixFromPath(jsonFile.url), skelData);
-			// 		// })
-			// 		// .catch(err => {
-			// 			// console.error(err);
-			// 		// });
-			// }
-		// 	next();
-		// });
-	}
 	private retrieveTextures(file: Resource): any {
 		const obj: any = {};
-		for (const slot of file.data.slots) {
-			obj[slot.name] = PIXI.utils.TextureCache[slot.name + '.png']
-			// go through skins also
+		for (const skin of Object.values(file.data.skins)) {
+			for (const attachment of Object.values(skin.attachments)) {
+				for (const entry of Object.keys(attachment)) {
+					obj[entry] = PIXI.utils.TextureCache[entry + '.png']
+				}
+			}
 		}
+		// check if there are duplicates in here!
 		return obj;
 		
 	}
